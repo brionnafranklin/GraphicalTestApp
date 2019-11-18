@@ -111,7 +111,7 @@ namespace GraphicalTestApp
                 _globalTransform = _localTransform;
             }
 
-            foreach (Entity child in _children)
+            foreach (Actor child in _children)
             {
                 child.UpdateTransform();
             }
