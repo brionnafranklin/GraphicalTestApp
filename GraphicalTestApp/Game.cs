@@ -23,6 +23,10 @@ namespace GraphicalTestApp
         //Run the game loop
         public void Run()
         {
+            //set up camera
+            Camera2D camera2D = new Camera2D();
+            camera2D.zoom = 6;
+
             //Update and draw until the game is over
             while (!RL.WindowShouldClose())
             {

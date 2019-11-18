@@ -7,6 +7,9 @@ namespace GraphicalTestApp
         public float Width { get; set; } = 1;
         public float Height { get; set; } = 1;
 
+        private Vector3 _min = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        private Vector3 _max = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+
         //Returns the Y coordinate at the top of the box
         public float Top
         {
@@ -36,18 +39,22 @@ namespace GraphicalTestApp
         {
             Width = width;
             Height = height;
+            X = -width / 2;
+            Y = -Height / 2;
         }
 
+        //detects collision using AABB
         public bool DetectCollision(AABB other)
         {
-            //## Implement DetectCollision(AABB) ##//
-            return false;
+            //test for overlapped as it exists faster
+            return !(_max.x < other._min.x || _max.y < other._min.y || _min.x > other._max.x || _min.y > other._max.y);
         }
 
+        //detects collision using a vector3
         public bool DetectCollision(Vector3 point)
         {
-            //## Implement DetectCollision(Vector3) ##//
-            return false;
+            //test for overlapped as it exists faster
+            return !(point.x < _min.x || point.y < _min.y || point.x > _max.x || point.y > _max.y);
         }
 
         //Draw the bounding box to the screen
