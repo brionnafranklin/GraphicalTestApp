@@ -7,7 +7,9 @@ namespace GraphicalTestApp
         private Vector3 _velocity = new Vector3();
         private Vector3 _acceleration = new Vector3();
 
-         //gets and sets velocity on the X axis
+        private float _maxSpeed = 5f;
+
+        //gets and sets velocity on the X axis
         public float XVelocity
         {
             get { return _velocity.x; }
@@ -40,6 +42,11 @@ namespace GraphicalTestApp
         {
             X = x;
             Y = y;
+        }
+        
+        public float getMaxSpeed
+        {
+            get { return _maxSpeed; }
         }
 
         //get acceleration and velocity

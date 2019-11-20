@@ -122,23 +122,23 @@ namespace GraphicalTestApp
 
         public void SetRotateX(double radians)
         {
-            Set(1, 0, 0,
-                0, (float)Math.Cos(radians), (float)-Math.Sin(radians),
-                0, (float)Math.Sin(radians), (float)Math.Cos(radians));
+            Set(m11, m12, m13,
+                m21, (float)Math.Cos(radians), (float)-Math.Sin(radians),
+                m31, (float)Math.Sin(radians), (float)Math.Cos(radians));
         }
 
         public void SetRotateY(double radians)
         {
-            Set((float)Math.Cos(radians), 0, (float)Math.Sin(radians),
-                0, 1, 0,
-                (float)-Math.Sin(radians), 0, (float)Math.Cos(radians));
+            Set((float)Math.Cos(radians), m12, (float)Math.Sin(radians),
+                m21, m22, m23,
+                (float)-Math.Sin(radians), m32, (float)Math.Cos(radians));
         }
 
         public void SetRotateZ(double radians)
         {
-            Set((float)Math.Cos(radians), (float)-Math.Sin(radians), 0,
-                (float)Math.Sin(radians), (float)Math.Cos(radians), 0,
-                0, 0, 1);
+            Set((float)Math.Cos(radians), (float)-Math.Sin(radians), m13,
+                (float)Math.Sin(radians), (float)Math.Cos(radians), m23,
+                m31, m32, m33);
         }
 
         public void RotateX(double radians)

@@ -25,7 +25,7 @@ namespace GraphicalTestApp
         {
             //set up camera
             Camera2D camera2D = new Camera2D();
-            camera2D.zoom = 6;
+            camera2D.zoom = 0;
 
             //Update and draw until the game is over
             while (!RL.WindowShouldClose())
