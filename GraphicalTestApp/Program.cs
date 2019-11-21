@@ -20,7 +20,7 @@ namespace GraphicalTestApp
             Tank player1 = new Tank(100, 100, 1);
             Sprite p1Sprite = new Sprite("tankBody_blue.png");
             AABB p1Hitbox = new AABB(p1Sprite.Height, p1Sprite.Width);
-            Barrel p1Barrel = new Barrel();
+            Barrel p1Barrel = new Barrel(player1.X, player1.Y);
             root.AddChild(player1);
             player1.AddChild(p1Sprite);
             player1.AddChild(p1Hitbox);
@@ -30,7 +30,8 @@ namespace GraphicalTestApp
             Tank player2 = new Tank(1120, 660, 2);
             Sprite p2Sprite = new Sprite("tankBody_red.png");
             AABB p2Hitbox = new AABB(p2Sprite.Height, p2Sprite.Width);
-            Barrel p2Barrel = new Barrel();
+            Barrel p2Barrel = new Barrel(player2.X, player2.Y);
+            Sprite p2BarrelSprite = new Sprite("tankRed_barrel1_outline.png");
             root.AddChild(player2);
             player2.AddChild(p2Sprite);
             player2.AddChild(p2Hitbox);
