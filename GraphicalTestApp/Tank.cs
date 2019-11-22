@@ -126,26 +126,26 @@ namespace GraphicalTestApp
         //player 2 controls
         public void p2controls()
         {
-            //up arrow
-            if (Input.IsKeyDown(265))
+            //keypad 8
+            if (Input.IsKeyDown(328))
             {
                 MoveUp();
                 return;
             }
-            //down arrow
-            if (Input.IsKeyDown(264))
+            //keypad 5
+            if (Input.IsKeyDown(325))
             {
                 MoveDown();
                 return;
             }
-            //right arrow
-            if (Input.IsKeyDown(262))
+            //keypad 6
+            if (Input.IsKeyDown(326))
             {
                 MoveRight();
                 return;
             }
-            //left arrow
-            if (Input.IsKeyDown(263))
+            //keypad 4
+            if (Input.IsKeyDown(324))
             {
                 MoveLeft();
                 return;
@@ -179,6 +179,12 @@ namespace GraphicalTestApp
             }
         }
 
+        //returns player number
+        public uint getPlayerNum()
+        {
+            return playerNum;
+        }
+
         //update every second
         public override void Update(float deltaTime)
         {
@@ -193,7 +199,7 @@ namespace GraphicalTestApp
             //check if player 2
             if (playerNum == 2)
             {
-                //bind player two's controls to arrow keys
+                //bind player two's controls to numpad
                 p2controls();
                 //make sure the player is on screen
                 checkTankPosition();

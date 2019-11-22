@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Actor.cs" />
     <Compile Include="Barrel.cs" />
+    <Compile Include="Bullet.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="AABB.cs" />

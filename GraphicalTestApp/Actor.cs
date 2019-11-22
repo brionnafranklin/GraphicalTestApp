@@ -22,7 +22,7 @@ namespace GraphicalTestApp
 
         private Matrix3 _localTransform = new Matrix3();
         private Matrix3 _globalTransform = new Matrix3();
-        
+
         // get and set X coordinate
         public float X
         {
@@ -99,12 +99,12 @@ namespace GraphicalTestApp
             //removes a child
         public void RemoveChild(Actor child)
         {
-            bool isMyChild = _children.Remove(child);
-            if (isMyChild)
+            if (_removals.Contains(child))
             {
-                child.Parent = null;
-                child._localTransform = child._globalTransform;
+                return;
             }
+            _removals.Add(child);
+            child.Parent = null;
         }
 
             //changes the position
