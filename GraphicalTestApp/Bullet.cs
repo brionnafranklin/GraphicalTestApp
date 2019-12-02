@@ -8,8 +8,10 @@ namespace GraphicalTestApp
 {
     class Bullet : Entity
     {
-        public Bullet (float x, float y) : base (x, y)
+        public float playerNum;
+        public Bullet (float x, float y, float p) : base (x, y)
         {
+            playerNum = p;
             X = x;
             Y = y;
         }

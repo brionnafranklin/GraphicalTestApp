@@ -93,7 +93,7 @@ namespace GraphicalTestApp
             //assign this entity as the child's parent
             child.Parent = this;
             //Add child to collection
-            _children.Add(child);
+            _additions.Add(child);
         }
 
             //removes a child
@@ -104,7 +104,7 @@ namespace GraphicalTestApp
                 return;
             }
             _removals.Add(child);
-            child.Parent = null;
+            //child.Parent = null;
         }
 
             //changes the position
@@ -141,6 +141,28 @@ namespace GraphicalTestApp
             Started = true;
         }
 
+        //checks to see if a givin value is with a givin min and max
+        public bool inRange(float val, float min, float max)
+        {
+            if (val > min && val < max)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //make sure the bullet is on screen
+        public void checkBulletPosition()
+        {
+            foreach (Actor a in _children)
+            {
+                if (inRange(X, 0, 1280) == false || inRange(Y, 0, 760) == false)
+                {
+                    RemoveChild(this);
+                }
+            }
+        }
+
         //Call the OnUpdate events of the Actor and its children
         public virtual void Update(float deltaTime)
         {
@@ -159,12 +181,19 @@ namespace GraphicalTestApp
             //Reset the addition list
             _additions.Clear();
 
+            //have root delete bullets off screen
+            if (this.Parent == null)
+            {
+                checkBulletPosition();
+            }
+
             //Remove all the Actors readied for removal
             foreach (Actor a in _removals)
             {
                 //Add a to _children
                 _children.Remove(a);
             }
+
             //Reset the removal list
             _removals.Clear();
             

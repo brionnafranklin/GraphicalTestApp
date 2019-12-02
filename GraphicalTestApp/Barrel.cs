@@ -16,12 +16,22 @@ namespace GraphicalTestApp
             Rotate((float)Math.PI);
         }
 
+        //creates bullet and sends it in the direction the barrel is facing
         public void Fire()
         {
-            Bullet bullet = new Bullet(XAbsolute, YAbsolute);
-            Sprite bulletSprite = new Sprite("bulletSand1_outline.png");
-            this.Parent.Parent.AddChild(bullet);
-            bullet.AddChild(bulletSprite);
+            if (this.Parent is Tank)
+            {
+                Tank player = this.Parent as Tank;
+                Bullet bullet = new Bullet(XAbsolute, YAbsolute, player.getPlayerNum());
+                Sprite bulletSprite = new Sprite("bulletSand1_outline.png");
+                AABB bulletHitBox = new AABB(bulletSprite.Height, bulletSprite.Width);
+                this.Parent.Parent.AddChild(bullet);
+                bullet.AddChild(bulletSprite);
+                bullet.AddChild(bulletHitBox);
+                bullet.SetRotate(this.GetRotation() + (float)Math.PI);
+                bullet.XVelocity = (float)Math.Cos(bullet.GetRotation() - (float)Math.PI * 0.5f) * 100;
+                bullet.YVelocity = (float)Math.Sin(bullet.GetRotation() - (float)Math.PI * 0.5f) * 100;
+            }
         }
 
         //p1 barrel controls
@@ -91,6 +101,7 @@ namespace GraphicalTestApp
                     //bind player two's barrel controls to 7 and 9 and 0
                     p2BarrelConrols(deltaTime);
             }
+            base.Update(deltaTime);
         }
     }
 }

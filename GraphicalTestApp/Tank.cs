@@ -10,18 +10,34 @@ namespace GraphicalTestApp
     {
         //assigns a number value to a player
         private uint playerNum;
+        static public List<Tank> PlayerList = new List<Tank>();
+
+        Sprite _pSprite;
+        AABB _pHitbox;
+        Barrel _pBarrel;
+        Sprite _pBarrelSprite;
 
         //places tank
-        public Tank( float x, float y, uint p) : base(x,y)
+        public Tank( float x, float y, uint p, string tankSprite, string barrelSprite) : base(x,y)
         {
+            Sprite pSprite = new Sprite(tankSprite);
+            AABB pHitbox = new AABB(pSprite.Height, pSprite.Width);
+            Barrel pBarrel = new Barrel(0, 0);
+            Sprite pBarrelSprite = new Sprite(barrelSprite);
+
+            _pSprite = pSprite;
+            _pHitbox = pHitbox;
+            _pBarrel = pBarrel;
+            _pBarrelSprite = pBarrelSprite;
+
+            AddChild(_pSprite);
+            AddChild(_pHitbox);
+            AddChild(_pBarrel);
+            AddChild(_pBarrelSprite);
+
             playerNum = p;
             X = x;
             Y = y;
-        }
-
-        public uint GetplayerNum()
-        {
-            return playerNum;
         }
 
         //checks to see if a givin value is with a givin min and max
@@ -185,9 +201,23 @@ namespace GraphicalTestApp
             return playerNum;
         }
 
+        public void tankOnTankCollision(float deltaTime)
+        {
+            foreach (Tank t in PlayerList)
+            {
+                if (_pHitbox.DetectCollision(t._pHitbox) == true && playerNum == t.playerNum)
+                {
+                    Parent.RemoveChild(t);
+                    Parent.RemoveChild(this);
+                }
+            }
+        }
+
         //update every second
         public override void Update(float deltaTime)
         {
+            tankOnTankCollision(deltaTime);
+
             //check if player 1
             if (playerNum == 1)
             {
