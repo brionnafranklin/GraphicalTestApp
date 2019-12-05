@@ -10,6 +10,8 @@ namespace GraphicalTestApp
         private Vector3 _min = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
         private Vector3 _max = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
 
+        Raylib.Color color = Raylib.Color.RED;
+
         //Returns the Y coordinate at the top of the box
         public float Top
         {
@@ -46,8 +48,15 @@ namespace GraphicalTestApp
         //detects collision using AABB
         public bool DetectCollision(AABB other)
         {
+            //return !(_max.x < other._min.x || _max.y < other._min.y || _min.x > other._max.x || _min.y > other._max.y)
             //test for overlapped as it exists faster
-            return !(_max.x < other._min.x || _max.y < other._min.y || _min.x > other._max.x || _min.y > other._max.y);
+            if (Right >= other.Left && Bottom >= other.Top && Left <= other.Right && Top <= other.Bottom)
+            {
+                color = Raylib.Color.BLUE;
+                return true;
+            }
+            color = Raylib.Color.RED;
+            return false;
         }
 
         //detects collision using a vector3
@@ -61,7 +70,7 @@ namespace GraphicalTestApp
         public override void Draw()
         {
             Raylib.Rectangle rec = new Raylib.Rectangle(Left, Top, Width, Height);
-            Raylib.Raylib.DrawRectangleLinesEx(rec, 5, Raylib.Color.RED);
+            Raylib.Raylib.DrawRectangleLinesEx(rec, 5, color);
             base.Draw();
         }
     }

@@ -11,11 +11,12 @@ namespace GraphicalTestApp
         //assigns a number value to a player
         private uint playerNum;
         static public List<Tank> PlayerList = new List<Tank>();
-
+         
         Sprite _pSprite;
         AABB _pHitbox;
         Barrel _pBarrel;
         Sprite _pBarrelSprite;
+        int collisionCount = 0;
 
         //places tank
         public Tank( float x, float y, uint p, string tankSprite, string barrelSprite) : base(x,y)
@@ -33,7 +34,7 @@ namespace GraphicalTestApp
             AddChild(_pSprite);
             AddChild(_pHitbox);
             AddChild(_pBarrel);
-            AddChild(_pBarrelSprite);
+            _pBarrel.AddChild(_pBarrelSprite);
 
             playerNum = p;
             X = x;
@@ -62,6 +63,12 @@ namespace GraphicalTestApp
             {
                 YVelocity = -YVelocity;
             }
+        }
+
+        //returns the AABB that is the tanks hit box
+        public AABB getTankHitbox()
+        {
+            return _pHitbox;
         }
 
         //move player up
@@ -201,14 +208,19 @@ namespace GraphicalTestApp
             return playerNum;
         }
 
+        //destroys both tanks when they collide
         public void tankOnTankCollision(float deltaTime)
         {
             foreach (Tank t in PlayerList)
             {
-                if (_pHitbox.DetectCollision(t._pHitbox) == true && playerNum == t.playerNum)
+                if (playerNum != t.playerNum)
                 {
-                    Parent.RemoveChild(t);
-                    Parent.RemoveChild(this);
+                    if (_pHitbox.DetectCollision(t._pHitbox) == true)
+                    {
+                        Parent.RemoveChild(t);
+                        Parent.RemoveChild(this);
+                        collisionCount++;
+                    }
                 }
             }
         }
@@ -216,8 +228,6 @@ namespace GraphicalTestApp
         //update every second
         public override void Update(float deltaTime)
         {
-            tankOnTankCollision(deltaTime);
-
             //check if player 1
             if (playerNum == 1)
             {
@@ -234,8 +244,9 @@ namespace GraphicalTestApp
                 //make sure the player is on screen
                 checkTankPosition();
             }
-
+            
             base.Update(deltaTime);
+            tankOnTankCollision(deltaTime);
         }
     }
 }

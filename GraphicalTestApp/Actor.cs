@@ -104,7 +104,6 @@ namespace GraphicalTestApp
                 return;
             }
             _removals.Add(child);
-            //child.Parent = null;
         }
 
             //changes the position
@@ -123,6 +122,13 @@ namespace GraphicalTestApp
             {
                 child.UpdateTransform();
             }
+        }
+
+        public Actor[] GetChildren()
+        {
+            Actor[] Children = new Actor[9999];
+            _children.CopyTo(Children);
+            return Children;
         }
 
         //Call the OnStart events of the Actor and its children
@@ -150,18 +156,7 @@ namespace GraphicalTestApp
             }
             return false;
         }
-
-        //make sure the bullet is on screen
-        public void checkBulletPosition()
-        {
-            foreach (Actor a in _children)
-            {
-                if (inRange(X, 0, 1280) == false || inRange(Y, 0, 760) == false)
-                {
-                    RemoveChild(this);
-                }
-            }
-        }
+        
 
         //Call the OnUpdate events of the Actor and its children
         public virtual void Update(float deltaTime)
@@ -181,17 +176,12 @@ namespace GraphicalTestApp
             //Reset the addition list
             _additions.Clear();
 
-            //have root delete bullets off screen
-            if (this.Parent == null)
-            {
-                checkBulletPosition();
-            }
-
             //Remove all the Actors readied for removal
             foreach (Actor a in _removals)
             {
                 //Add a to _children
                 _children.Remove(a);
+                a.Parent = null;
             }
 
             //Reset the removal list

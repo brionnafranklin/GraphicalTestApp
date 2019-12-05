@@ -20,10 +20,9 @@ namespace GraphicalTestApp
             Tank player1 = new Tank(100, 100, 1, "tankBody_blue.png", "tankBlue_barrel1_outline.png");
             Tank.PlayerList.Add(player1);
             root.AddChild(player1);
-            
 
             //set up player 2 tank
-            Tank player2 = new Tank(1120, 660, 2,"tankBody_red.png", "tankRed_barrel1_outline.png");
+            Tank player2 = new Tank(1180, 660, 2,"tankBody_red.png", "tankRed_barrel1_outline.png");
             Tank.PlayerList.Add(player2);
             root.AddChild(player2);
 
