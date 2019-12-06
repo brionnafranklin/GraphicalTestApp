@@ -32,7 +32,7 @@ namespace GraphicalTestApp
         }
 
         //p1 barrel controls
-        public void p1BarrelConrols(float deltaTime)
+        public virtual void p1BarrelConrols(float deltaTime)
         {
             //q
             if (Input.IsKeyDown(81))
@@ -55,7 +55,7 @@ namespace GraphicalTestApp
         }
 
         //p2 barrel controls
-        public void p2BarrelConrols(float deltaTime)
+        public virtual void p2BarrelConrols(float deltaTime)
         {
             //7 keypad
             if (Input.IsKeyDown(327))

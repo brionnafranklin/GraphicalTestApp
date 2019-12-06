@@ -15,7 +15,9 @@ namespace GraphicalTestApp
             Actor root = new Actor();
             game.Root = root;
 
-            //## Set up game here ##//
+            PowerUpController powerUpController = new PowerUpController();
+            root.AddChild(powerUpController);
+
             //set up player 1 tank
             Tank player1 = new Tank(100, 100, 1, "tankBody_blue.png", "tankBlue_barrel1_outline.png");
             Tank.PlayerList.Add(player1);

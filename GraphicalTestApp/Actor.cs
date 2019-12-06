@@ -157,10 +157,24 @@ namespace GraphicalTestApp
             return false;
         }
         
+        //toggles on and off visial hitboxes
+        public void ToggleHitboxes()
+        {
+            if (Input.IsKeyPressed(61))//=
+            {
+                AABB.canDrawHitbox = true;
+            }
+            if (Input.IsKeyPressed(45))//-
+            {
+                AABB.canDrawHitbox = false;
+            }
+        }
 
         //Call the OnUpdate events of the Actor and its children
         public virtual void Update(float deltaTime)
         {
+            ToggleHitboxes();
+
             //Update this Actor and its children's transforms
             UpdateTransform();
 

@@ -6,7 +6,7 @@ namespace GraphicalTestApp
     {
         public float Width { get; set; } = 1;
         public float Height { get; set; } = 1;
-
+        public static bool canDrawHitbox = false;
         private Vector3 _min = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
         private Vector3 _max = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
 
@@ -66,11 +66,23 @@ namespace GraphicalTestApp
             return !(point.x < _min.x || point.y < _min.y || point.x > _max.x || point.y > _max.y);
         }
 
+        public void DrawHitBoxes()
+        {
+            if (canDrawHitbox == true)
+            { 
+            Raylib.Rectangle rec = new Raylib.Rectangle(Left, Top, Width, Height);
+            Raylib.Raylib.DrawRectangleLinesEx(rec, 5, color);
+            }
+            if (canDrawHitbox == false)
+            {
+                return;
+            }
+        }
+
         //Draw the bounding box to the screen
         public override void Draw()
         {
-            Raylib.Rectangle rec = new Raylib.Rectangle(Left, Top, Width, Height);
-            Raylib.Raylib.DrawRectangleLinesEx(rec, 5, color);
+            DrawHitBoxes();
             base.Draw();
         }
     }

@@ -8,9 +8,18 @@ namespace GraphicalTestApp
 {
     class SansUp : Barrel
     {
+        Sprite _bSprite;
+        AABB _bHitbox;
+
         //replace barrel
-        public SansUp(float x, float y) : base(x, y)
+        public SansUp(float x, float y, string _barrelSprite) : base(x, y)
         {
+            Sprite barrelSprite = new Sprite(_barrelSprite);
+            AABB barrelHitBox = new AABB(barrelSprite.Height, barrelSprite.Width);
+
+            _bSprite = barrelSprite;
+            _bHitbox = barrelHitBox;
+
             X = x;
             Y = y;
             Rotate((float)Math.PI);
@@ -31,6 +40,50 @@ namespace GraphicalTestApp
             }
         }
 
-        
+        //p1 barrel controls
+        public override void p1BarrelConrols(float deltaTime)
+        {
+            //q
+            if (Input.IsKeyDown(81))
+            {
+                //rotate left
+                Rotate((float)-Math.PI / 6 * deltaTime * 20);
+            }
+            //e (nice)
+            if (Input.IsKeyDown(69))
+            {
+                //rotate right
+                Rotate((float)Math.PI / 6 * deltaTime * 20);
+            }
+            //space
+            if (Input.IsKeyDown(32))
+            {
+                //shoot bullet
+                Fire();
+            }
+        }
+
+        //p2 barrel controls
+        public override void p2BarrelConrols(float deltaTime)
+        {
+            //7 keypad
+            if (Input.IsKeyDown(327))
+            {
+                //rotate left
+                Rotate((float)-Math.PI / 6 * deltaTime * 20);
+            }
+            //9 keypad
+            if (Input.IsKeyDown(329))
+            {
+                //rotate right
+                Rotate((float)Math.PI / 6 * deltaTime * 20);
+            }
+            //0 keypad
+            if (Input.IsKeyDown(320))
+            {
+                //shoot bullet
+                Fire();
+            }
+        }
     }
 }
