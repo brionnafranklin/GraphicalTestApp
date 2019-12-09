@@ -82,9 +82,9 @@ namespace GraphicalTestApp
         {
             
             //check if player 1
-            if (this.Parent is Tank)
+            if (Parent is Tank)
             {
-                Tank player = this.Parent as Tank;
+                Tank player = Parent as Tank;
                 if (player.getPlayerNum() == 1)
                 { 
                     //bind player one's barrel controls to q and e and space
@@ -93,9 +93,9 @@ namespace GraphicalTestApp
             }
 
             //check if player 2
-            if (this.Parent is Tank)
+            if (Parent is Tank)
             {
-                Tank player = this.Parent as Tank;
+                Tank player = Parent as Tank;
                 if (player.getPlayerNum() == 2)
                 { 
                     //bind player two's barrel controls to 7 and 9 and 0

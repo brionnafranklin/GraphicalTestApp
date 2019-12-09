@@ -38,11 +38,11 @@ namespace GraphicalTestApp
                 if (b is Bullet)
                 {
                     Bullet bullet = b as Bullet;
-                    if (bullet.playerNum == this.playerNum)
+                    if (bullet.playerNum == playerNum)
                     {
                         return;
                     }
-                    if (_bHitbox.DetectCollision(bullet._bHitbox) == true)
+                    else if (_bHitbox.DetectCollision(bullet._bHitbox) == true)
                     {
                         Parent.RemoveChild(b);
                         Parent.RemoveChild(this);

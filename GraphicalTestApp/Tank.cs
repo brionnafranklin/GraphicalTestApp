@@ -225,6 +225,33 @@ namespace GraphicalTestApp
             }
         }
 
+        //replaces regular barrel with sansUp
+        public void tankOnSansIconCollision(float deltaTime)
+        {
+            foreach (SansIcon s in SansIcon.SansList)
+            {
+                if (_pHitbox.DetectCollision(s._sHitbox))
+                {
+                    //remove child if barrel
+                    foreach (Actor a in GetChildren())
+                    {
+                        if (a is Barrel)
+                        {
+                            RemoveChild(a);
+                        }
+                    }
+                    //add SansUp as child of tank
+                    SansUp sansUp = new SansUp(0, 0, "GasterBlaster20x28.png");
+                    AddChild(sansUp);
+                    if(s.Parent is null)
+                    {
+                        return;
+                    }
+                    s.Parent.RemoveChild(s);
+                }
+            }
+        }
+
         //update every second
         public override void Update(float deltaTime)
         {
@@ -247,6 +274,7 @@ namespace GraphicalTestApp
             
             base.Update(deltaTime);
             tankOnTankCollision(deltaTime);
+            tankOnSansIconCollision(deltaTime);
         }
     }
 }

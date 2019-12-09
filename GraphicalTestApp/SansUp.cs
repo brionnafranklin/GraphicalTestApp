@@ -20,9 +20,11 @@ namespace GraphicalTestApp
             _bSprite = barrelSprite;
             _bHitbox = barrelHitBox;
 
+            AddChild(barrelSprite);
+            AddChild(barrelHitBox);
+
             X = x;
             Y = y;
-            Rotate((float)Math.PI);
         }
 
         //creates bullet and sends it in the direction the barrel is facing
@@ -31,7 +33,7 @@ namespace GraphicalTestApp
             if (Parent is Tank)
             {
                 Tank player = Parent as Tank;
-                Bullet bullet = new Bullet(XAbsolute, YAbsolute, player.getPlayerNum(), "Bone44x12.png");
+                SansBullet bullet = new SansBullet(XAbsolute, YAbsolute, player.getPlayerNum(), "Bone44x12.png");
 
                 Parent.Parent.AddChild(bullet);
                 bullet.SetRotate(GetRotation() + (float)Math.PI);
@@ -84,6 +86,12 @@ namespace GraphicalTestApp
                 //shoot bullet
                 Fire();
             }
+        }
+
+        //update every second
+        public override void Update(float deltaTime)
+        {
+            base.Update(deltaTime);
         }
     }
 }
