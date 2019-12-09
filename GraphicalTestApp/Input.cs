@@ -4,6 +4,7 @@ using RL = Raylib.Raylib;
 
 namespace GraphicalTestApp
 {
+    //creates inputs that can be assigned to keys 
     static class Input
     {
         //Returns whether the key was pressed since the last frame

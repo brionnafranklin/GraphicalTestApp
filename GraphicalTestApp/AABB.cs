@@ -2,14 +2,21 @@
 
 namespace GraphicalTestApp
 {
+    //class used to display hitboxes
     class AABB : Actor
     {
+        //get and sets the width of the hitbox
         public float Width { get; set; } = 1;
+        //get and sets the height of the hitbox
         public float Height { get; set; } = 1;
+        //used to enable and disable shown hitboxes
         public static bool canDrawHitbox = false;
+        //creates a default vector3 for the minimum dimentions of the AABB
         private Vector3 _min = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        //creates a default vector3 for the maximum dimentions of the AABB
         private Vector3 _max = new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
 
+        //sets the default color of the hitbox to red
         Raylib.Color color = Raylib.Color.RED;
 
         //Returns the Y coordinate at the top of the box
@@ -66,6 +73,7 @@ namespace GraphicalTestApp
             return !(point.x < _min.x || point.y < _min.y || point.x > _max.x || point.y > _max.y);
         }
 
+        //draw the hitbox
         public void DrawHitBoxes()
         {
             if (canDrawHitbox == true)

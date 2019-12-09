@@ -21,9 +21,9 @@ namespace GraphicalTestApp
         public Matrix4(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44)
         {
             this.m11 = m11; this.m12 = m12; this.m13 = m13; this.m14 = m14;
-            this.m21 = m21; this.m22 = m22; this.m23 = m23; this.m24 = m14;
-            this.m31 = m31; this.m32 = m32; this.m33 = m33; this.m34 = m14;
-            this.m41 = m41; this.m42 = m42; this.m43 = m43; this.m44 = m14;
+            this.m21 = m21; this.m22 = m22; this.m23 = m23; this.m24 = m24;
+            this.m31 = m31; this.m32 = m32; this.m33 = m33; this.m34 = m34;
+            this.m41 = m41; this.m42 = m42; this.m43 = m43; this.m44 = m44;
         }
 
         public Matrix4 GetTransposed()
@@ -34,9 +34,9 @@ namespace GraphicalTestApp
         public Matrix4(Matrix4 matrix_4)
         {
             matrix_4.m11 = m11; matrix_4.m12 = m12; matrix_4.m13 = m13; matrix_4.m14 = m14;
-            matrix_4.m21 = m21; matrix_4.m22 = m22; matrix_4.m23 = m23; matrix_4.m24 = m14;
-            matrix_4.m31 = m31; matrix_4.m32 = m32; matrix_4.m33 = m33; matrix_4.m34 = m14;
-            matrix_4.m41 = m41; matrix_4.m42 = m42; matrix_4.m43 = m43; matrix_4.m44 = m14;
+            matrix_4.m21 = m21; matrix_4.m22 = m22; matrix_4.m23 = m23; matrix_4.m24 = m24;
+            matrix_4.m31 = m31; matrix_4.m32 = m32; matrix_4.m33 = m33; matrix_4.m34 = m34;
+            matrix_4.m41 = m41; matrix_4.m42 = m42; matrix_4.m43 = m43; matrix_4.m44 = m44;
         }
 
         public override string ToString()

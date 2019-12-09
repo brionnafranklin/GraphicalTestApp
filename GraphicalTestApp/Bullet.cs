@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace GraphicalTestApp
 {
+    //a type of entity with a hitbox that is shot from barrels
     class Bullet : Entity
     {
+        //declares the bullet's sprite
         public Sprite _bSprite;
+        //declares the bullet's hitbox
         public AABB _bHitbox;
-
+        //declares the playerNum
         public float playerNum;
+
+        //sets up everything the bullet is/has
         public Bullet(float x, float y, float p, string _bulletSprite) : base(x, y)
         {
             playerNum = p;

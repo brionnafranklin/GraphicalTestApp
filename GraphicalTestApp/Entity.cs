@@ -2,11 +2,14 @@
 
 namespace GraphicalTestApp
 {
+    //an Actor with movement capablities
     class Entity : Actor
     {
+        //declares and innitializes velocity
         private Vector3 _velocity = new Vector3();
+        //declares and innitializes acceleration
         private Vector3 _acceleration = new Vector3();
-
+        //sets max speed
         private float _maxSpeed = 5f;
 
         //gets and sets velocity on the X axis
@@ -44,6 +47,7 @@ namespace GraphicalTestApp
             Y = y;
         }
         
+        //returns the value of max speed
         public float getMaxSpeed
         {
             get { return _maxSpeed; }

@@ -3,24 +3,38 @@ using System.Collections.Generic;
 
 namespace GraphicalTestApp
 {
+    //creates a delegate for when the program starts
     delegate void StartEvent();
+    //creates a delegate for when the program updates
     delegate void UpdateEvent(float deltaTime);
+    //creates a delegate for when the program draw
     delegate void DrawEvent();
 
+    //class for anything that can appear in the game
     class Actor
     {
+        //instance of the StartEvent
         public StartEvent OnStart;
+        //instance of the UpdateEvent
         public UpdateEvent OnUpdate;
+        //instance of the DrawEvent
         public DrawEvent OnDraw;
 
+        //returns weather the game has started
         public bool Started { get; private set; } = false;
 
+        //used to set and get an actor's parent
         public Actor Parent { get; private set; } = null;
+        //creates a list used to store children
         private List<Actor> _children = new List<Actor>();
+        //creates a list used to store additions
         private List<Actor> _additions = new List<Actor>();
+        //creates a list used to store removals
         private List<Actor> _removals = new List<Actor>();
 
+        //creates a matrix used for relative transform
         private Matrix3 _localTransform = new Matrix3();
+        //creates a matrix used for transform
         private Matrix3 _globalTransform = new Matrix3();
 
         // get and set X coordinate
@@ -69,13 +83,13 @@ namespace GraphicalTestApp
             UpdateTransform();
         }
 
+        //just returns one
         public float GetScale()
         {
-            //## Implement getting the scale of _localTransform ##//
             return 1;
         }
 
-        //Implement scaling _localTransform
+        //scales using _localTransform
         public void Scale(float scale)
         {
             _localTransform.Scale(scale, scale, 1);
@@ -96,7 +110,7 @@ namespace GraphicalTestApp
             _additions.Add(child);
         }
 
-            //removes a child
+        //removes a child
         public void RemoveChild(Actor child)
         {
             if (_removals.Contains(child))
@@ -106,7 +120,7 @@ namespace GraphicalTestApp
             _removals.Add(child);
         }
 
-            //changes the position
+        //changes the position
         public void UpdateTransform()
         {
             if (Parent != null)
@@ -124,6 +138,7 @@ namespace GraphicalTestApp
             }
         }
 
+        //returns an array containing a copy of _children
         public Actor[] GetChildren()
         {
             Actor[] Children = new Actor[9999];

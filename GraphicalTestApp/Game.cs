@@ -4,6 +4,7 @@ using RL = Raylib.Raylib;
 
 namespace GraphicalTestApp
 {
+    //sets up the basics for the game
     class Game
     {
         //The current root Actor

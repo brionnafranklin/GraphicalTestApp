@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphicalTestApp
 {
+    //A type of entity that can turn and fire bullets
     class Barrel : Entity
     {
         //set on tank's barrel
