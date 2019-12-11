@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphicalTestApp
 {
+    //the main entity controled by the player
     class Tank : Entity
     {
         //assigns a number value to a player

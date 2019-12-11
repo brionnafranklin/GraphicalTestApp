@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace GraphicalTestApp
 {
+    //a special type of bullet that can't shoot bullets belonging to the player who shot it
     class SansBullet : Bullet
     {
+        //declares the SansBullet's sprite
         Sprite _bSprite;
+        //declares the SansBullet's hit box
         AABB _bHitbox;
-
+        ////declares the SansBullet's player number
         public float playerNum;
+
+        //constructer for SansBullet; sets up everything for the SansBullet uncluding x, y, playernumber, and sprite
         public SansBullet(float x, float y, float p, string _bulletSprite) : base(x, y, p, _bulletSprite)
         {
             playerNum = p;

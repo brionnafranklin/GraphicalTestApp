@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace GraphicalTestApp
 {
+    //the basic program that calls the necessities for the game
     class Program
     {
+        //calls and sets up all the basics that are needed for the game to run correctly
         static void Main(string[] args)
         {
             Game game = new Game(1280, 760, "Graphical Test Application");

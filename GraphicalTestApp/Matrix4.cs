@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace GraphicalTestApp
 {
+    //stores numbers in a 4 by 4 matrix
     class Matrix4
     {
+        //declares each spot in the matrix
         public float m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44;
 
+        //sets the identity matrix to default
         public Matrix4()
         {
             m11 = 1; m12 = 0; m13 = 0; m14 = 0;
@@ -18,6 +21,7 @@ namespace GraphicalTestApp
             m41 = 0; m42 = 0; m43 = 0; m44 = 1;
         }
 
+        //sets matrix to inputted values
         public Matrix4(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44)
         {
             this.m11 = m11; this.m12 = m12; this.m13 = m13; this.m14 = m14;
@@ -26,11 +30,13 @@ namespace GraphicalTestApp
             this.m41 = m41; this.m42 = m42; this.m43 = m43; this.m44 = m44;
         }
 
+        //returns a new matrix with values of the original
         public Matrix4 GetTransposed()
         {
             return new Matrix4(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
         }
 
+        //sets the values in the matrix to that of an inputted matrix
         public Matrix4(Matrix4 matrix_4)
         {
             matrix_4.m11 = m11; matrix_4.m12 = m12; matrix_4.m13 = m13; matrix_4.m14 = m14;
@@ -39,11 +45,13 @@ namespace GraphicalTestApp
             matrix_4.m41 = m41; matrix_4.m42 = m42; matrix_4.m43 = m43; matrix_4.m44 = m44;
         }
 
+        //lists the values in the matrix
         public override string ToString()
         {
             return "{ " + m11 + ", " + m12 + ", " + m13 + ", " + m14 + ", " + m21 + ", " + m22 + ", " + m23 + ", " + m24 + ", " + m31 + ", " + m32 + ", " + m33 + ", " + m34 + ", " + m41 + ", " + m42 + ", " + m43 + ", " + m44 + " }";
         }
 
+        //makes it so multiplying matrices together works correctly
         public static Matrix4 operator *(Matrix4 lhs, Matrix4 rhs)
         {
             return new Matrix4(
@@ -68,6 +76,7 @@ namespace GraphicalTestApp
                 lhs.m41 * rhs.m14 + lhs.m42 * rhs.m24 + lhs.m43 * rhs.m34 + lhs.m44 * rhs.m44);
         }
 
+        //makes it so multiplying matrices by vectors works correctly
         public static Vector4 operator *(Matrix4 lhs, Vector4 rhs)
         {
             return new Vector4(
@@ -78,6 +87,7 @@ namespace GraphicalTestApp
 
         }
 
+        //sets m11, m22, and m33 to inputted values in order to change the scale
         public void SetScaled(float x, float y, float z)
         {
             m11 = x; m12 = 0; m13 = 0; m14 = 0;
@@ -86,6 +96,7 @@ namespace GraphicalTestApp
             m41 = 0; m42 = 0; m43 = 0; m44 = 1;
         }
 
+        //sets m11, m22, and m33 using the inputted vector in order to change the scale
         public void SetScaled(Vector4 v)
         {
             m11 = v.x; m12 = 0; m13 = 0; m14 = 0;
@@ -93,18 +104,22 @@ namespace GraphicalTestApp
             m31 = 0; m32 = 0; m33 = v.z; m34 = 0;
             m41 = 0; m42 = 0; m43 = 0; m44 = 1;
         }
+
+        //sets the values in the matrix to that of an inputted matrix
         public Matrix4 Set(Matrix4 m)
         {
             //i have no idea what goes here. it needs to set m to the input matrix? i think?
             return m = new Matrix4();
         }
 
+        //sets matrix to inputted values
         public Matrix4 Set(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44)
         {
             //i have no idea what goes here. it needs to set m to the input matrix? i think?
             return new Matrix4(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
         }
 
+        //sets the scale of the matrix using 3 inputted values
         void Scale(float x, float y, float z)
         {
             Matrix4 m = new Matrix4(); m.SetScaled(x, y, z);
@@ -112,6 +127,7 @@ namespace GraphicalTestApp
             Set(this * m);
         }
 
+        //sets the scale of the matrix using a inputted vector
         void Scale(Vector4 v)
         {
             Matrix4 m = new Matrix4();
@@ -119,6 +135,7 @@ namespace GraphicalTestApp
             Set(this * m);
         }
 
+        //sets rotation on the x axis
         public void SetRotateX(double radians)
         {
             Set(m11, m12, m13, m14,
@@ -127,6 +144,7 @@ namespace GraphicalTestApp
                 m41, m42, m43, m44);
         }
 
+        //sets rotation on the y axis
         public void SetRotateY(double radians)
         {
             Set((float)Math.Cos(radians), m12, (float)Math.Sin(radians), m14,
@@ -135,6 +153,7 @@ namespace GraphicalTestApp
                 m41, m42, m43, m44);
         }
 
+        //sets rotation on the z axis
         public void SetRotateZ(double radians)
         {
             Set((float)Math.Cos(radians), (float)-Math.Sin(radians), m13, m14,
@@ -143,6 +162,7 @@ namespace GraphicalTestApp
                 m41, m42, m43, m44);
         }
 
+        //rotates on the x axis
         public void RotateX(double radians)
         {
             Matrix4 m = new Matrix4();
@@ -151,6 +171,7 @@ namespace GraphicalTestApp
             Set(this * m);
         }
 
+        //rotates on the y axis
         public void RotateY(double radians)
         {
             Matrix4 m = new Matrix4();
@@ -159,6 +180,7 @@ namespace GraphicalTestApp
             Set(this * m);
         }
 
+        //rotates on the z axis
         public void RotateZ(double radians)
         {
             Matrix4 m = new Matrix4();
@@ -167,6 +189,7 @@ namespace GraphicalTestApp
             Set(this * m);
         }
 
+        //sets the euler of the matrix usig pitch, yaw, and roll
         void SetEuler(float pitch, float yaw, float roll)
         {
 
@@ -180,11 +203,13 @@ namespace GraphicalTestApp
             Set(z * y * x);
         }
 
+        //sets the translation of the matrix to the inputted value
         public void SetTranslation(float x, float y, float z)
         {
             m14 = x; m24 = y; m34 = z; m44 = 1;
         }
 
+        //translates the matrix by the inputted values
         public void Translate(float x, float y, float z)
         {
             //apply vector offset

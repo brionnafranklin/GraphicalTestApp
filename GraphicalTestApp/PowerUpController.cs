@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphicalTestApp
 {
+    //controlls the spawning of power ups
     class PowerUpController : Actor
     {
         //create the timer used for power ups

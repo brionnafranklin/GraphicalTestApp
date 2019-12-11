@@ -4,9 +4,12 @@ using RL = Raylib.Raylib;
 
 namespace GraphicalTestApp
 {
+    //an image that can be childed in order to make the parent visible
     class Sprite : Actor
     {
+        //declares and innitaulizes a new texture
         private Texture2D _texture = new Texture2D();
+        //declares and innitaulizes a new image
         private Image _image = new Image();
 
         //The width of the Sprite

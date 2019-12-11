@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphicalTestApp
 {
+    //an icon that, when touch by a player, gives special abilities to that player
     class SansIcon : Entity
     {
         //creates a hitbox for SansIcon

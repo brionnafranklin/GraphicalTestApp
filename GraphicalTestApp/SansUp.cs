@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace GraphicalTestApp
 {
+    //a special type of barrel that replaces the default barrel when a player touches the SansIcon
     class SansUp : Barrel
     {
+        //declares a sprite that will be used for the SansUp
         Sprite _bSprite;
+        //declares a hit box that will be used for the SansUp
         AABB _bHitbox;
 
         //replace barrel
