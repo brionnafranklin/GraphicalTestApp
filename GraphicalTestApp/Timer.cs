@@ -12,7 +12,7 @@ namespace GraphicalTestApp
         private long _currentTime = 0;
         //declares and innitaulizes the previousTime
         private long _previousTime = 0;
-        ////declares and innitaulizes deltaTime
+        //declares and innitaulizes deltaTime
         private float _deltaTime = 0.005f;
 
         //starts the stopwatch

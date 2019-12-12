@@ -13,7 +13,7 @@ namespace GraphicalTestApp
         Sprite _bSprite;
         //declares the SansBullet's hit box
         AABB _bHitbox;
-        ////declares the SansBullet's player number
+        //declares the SansBullet's player number
         public float playerNum;
 
         //constructer for SansBullet; sets up everything for the SansBullet uncluding x, y, playernumber, and sprite

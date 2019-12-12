@@ -108,14 +108,12 @@ namespace GraphicalTestApp
         //sets the values in the matrix to that of an inputted matrix
         public Matrix4 Set(Matrix4 m)
         {
-            //i have no idea what goes here. it needs to set m to the input matrix? i think?
             return m = new Matrix4();
         }
 
         //sets matrix to inputted values
         public Matrix4 Set(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44)
         {
-            //i have no idea what goes here. it needs to set m to the input matrix? i think?
             return new Matrix4(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
         }
 

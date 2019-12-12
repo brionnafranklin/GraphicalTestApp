@@ -11,13 +11,17 @@ namespace GraphicalTestApp
     {
         //assigns a number value to a player
         private uint playerNum;
+        //ceates a list of players
         static public List<Tank> PlayerList = new List<Tank>();
          
+        //declares a sprite that will be used for the tank
         Sprite _pSprite;
+        //declares a hitbox that will be used for the tank
         AABB _pHitbox;
+        //declares a barrel that will be used for the tank
         Barrel _pBarrel;
+        //declares a sprite that will be used for the barrel
         Sprite _pBarrelSprite;
-        int collisionCount = 0;
 
         //places tank
         public Tank( float x, float y, uint p, string tankSprite, string barrelSprite) : base(x,y)
@@ -220,7 +224,6 @@ namespace GraphicalTestApp
                     {
                         Parent.RemoveChild(t);
                         Parent.RemoveChild(this);
-                        collisionCount++;
                     }
                 }
             }

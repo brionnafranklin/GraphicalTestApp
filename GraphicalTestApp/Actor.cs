@@ -19,12 +19,7 @@ namespace GraphicalTestApp
         public UpdateEvent OnUpdate;
         //instance of the DrawEvent
         public DrawEvent OnDraw;
-
-        //returns weather the game has started
-        public bool Started { get; private set; } = false;
-
-        //used to set and get an actor's parent
-        public Actor Parent { get; private set; } = null;
+        
         //creates a list used to store children
         private List<Actor> _children = new List<Actor>();
         //creates a list used to store additions
@@ -37,7 +32,13 @@ namespace GraphicalTestApp
         //creates a matrix used for transform
         private Matrix3 _globalTransform = new Matrix3();
 
-        // get and set X coordinate
+        //returns weather the game has started
+        public bool Started { get; private set; } = false;
+
+        //used to set and get an actor's parent
+        public Actor Parent { get; private set; } = null;
+
+        //get and set X coordinate
         public float X
         {
             get { return _localTransform.m13; }
