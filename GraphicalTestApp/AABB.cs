@@ -25,19 +25,19 @@ namespace GraphicalTestApp
             get { return YAbsolute - Height / 2; }
         }
 
-        //Returns the Y coordinate at the top of the box
+        //Returns the Y coordinate at the bottom of the box
         public float Bottom
         {
             get { return YAbsolute + Height / 2; }
         }
 
-        //Returns the X coordinate at the top of the box
+        //Returns the X coordinate at the left of the box
         public float Left
         {
             get { return XAbsolute - Height / 2; }
         }
 
-        //Returns the X coordinate at the top of the box
+        //Returns the X coordinate at the right of the box
         public float Right
         {
             get { return XAbsolute + Width / 2; }
